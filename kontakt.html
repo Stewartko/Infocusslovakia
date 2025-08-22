@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>infocusslovakia — Kontakt</title>
+  <meta name="description" content="Kontaktujte nás: email, telefón, formulár a mapa. Odošlite dopyt k natáčaniu alebo postprodukcii videí." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14; --panel:#121821; --text:#eaf0f6; --muted:#9aa8b7; --accent:#59c1ff; --accent-2:#ff4d6d;
+      --maxw:1100px; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, #0f1822 0%, #0b0f14 50%, #0b0f14 100%) fixed;
+      line-height:1.6;
+    }
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    section{padding:80px 0}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(8px);background:color-mix(in oklab,var(--bg) 65%,transparent);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg at 50% 50%,#0e1b26,#16283a 35%,#182a40 36%,#59c1ff 37%,#16283a 55%,#0e1b26 100%);box-shadow:inset 0 2px 8px rgba(0,0,0,.4),0 4px 16px rgba(89,193,255,.15)}
+    .brand span{font-size:1.05rem;text-transform:lowercase}
+    /* bez podčiarknutia */
+    a.brand{ text-decoration:none; color:inherit; }
+    a.brand:hover,a.brand:focus{ text-decoration:none; }
+
+    nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+    nav a{color:var(--text);text-decoration:none;font-weight:500;opacity:.9}
+    nav a:hover{opacity:1;color:var(--accent)}
+    nav a.active{color:var(--accent);opacity:1}
+
+    /* Mobile menu */
+    .burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:var(--panel);align-items:center;justify-content:center;cursor:pointer}
+    .burger span{display:block;width:20px;height:2px;background:var(--text);position:relative}
+    .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--text);transition:.2s ease}
+    .burger span::before{top:-6px}.burger span::after{top:6px}
+    @media (max-width:820px){
+      nav ul{display:none;position:absolute;top:64px;right:16px;left:16px;padding:16px;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:var(--shadow)}
+      nav ul.open{display:flex;flex-direction:column}
+      .burger{display:flex}
+    }
+
+    /* Hero */
+    .hero{padding:96px 0 32px}
+    .hero h1{font-size:clamp(2rem,3.6vw,3rem);line-height:1.15;margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0}
+
+    /* Grid */
+    .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:22px}
+    @media (max-width:980px){.contact-grid{grid-template-columns:1fr}}
+
+    form{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+    label{font-weight:600;font-size:.95rem}
+    input,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0e1420;color:var(--text);outline:none}
+    input:focus,textarea:focus{border-color:color-mix(in oklab,var(--accent) 45%, white 0%);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 18%, transparent)}
+    textarea{min-height:140px;resize:vertical}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,#1a222e,#101722);color:var(--text);text-decoration:none;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05)}
+    .btn:hover{border-color:color-mix(in oklab,var(--accent) 40%, white 0%);box-shadow:0 12px 28px rgba(0,0,0,.4),0 0 0 3px color-mix(in oklab,var(--accent) 25%, transparent)}
+    .btn--primary{background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 55%, #1b2531),#172233);border-color:color-mix(in oklab,var(--accent) 60%, #000 0%)}
+
+    .box{background:linear-gradient(180deg,#121a24,#0e141d);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .mini{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:560px){.mini{grid-template-columns:1fr}}
+    .kv{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center}
+    .pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:4px 8px;font-size:.85rem}
+
+    /* Map card */
+    .map{overflow:hidden;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);height:300px}
+    .map iframe{width:100%;height:100%;border:0;display:block}
+
+    /* FAQ */
+    .faq{margin-top:28px}
+    details{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+    details + details{margin-top:10px}
+    summary{cursor:pointer;font-weight:600}
+    details[open] summary{color:var(--accent)}
+    .hint{color:var(--muted);font-size:.9rem}
+
+    /* Footer */
+    footer{padding:30px 0 60px;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+    .foot{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .foot small{opacity:.9}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(14px);filter:saturate(.9);transition:opacity .6s ease,transform .6s ease,filter .6s ease}
+    .reveal.is-visible{opacity:1;transform:none;filter:saturate(1)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html#home" aria-label="Domov">
+        <div class="logo" aria-hidden="true"></div>
+        <span>infocusslovakia</span>
+      </a>
+      <nav aria-label="Hlavná navigácia">
+        <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlist"><span></span></button>
+        <ul id="navlist">
+          <li><a href="index.html#home">Domov</a></li>
+          <li><a href="projekty.html">Projekty</a></li>
+          <li><a href="cennik.html">Cenník</a></li>
+          <li><a href="proces.html">Proces</a></li>
+          <li><a href="onas.html">O nás</a></li>
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="container">
+      <h1>Kontakt</h1>
+      <p>Napíšte nám pár viet o projekte — ozveme sa s návrhom a odhadom rozpočtu.</p>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <form id="contactForm" class="reveal" aria-label="Kontaktný formulár">
+          <div class="field">
+            <label for="name">Meno / firma</label>
+            <input id="name" name="name" type="text" placeholder="Vaše meno alebo firma" required />
+          </div>
+          <div class="mini">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="vas@email.sk" required />
+            </div>
+            <div class="field">
+              <label for="phone">Telefón (nepovinné)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+421 ..." />
+            </div>
+          </div>
+          <div class="field">
+            <label for="topic">Téma</label>
+            <input id="topic" name="topic" type="text" placeholder="Promo / produktové video / event ..." />
+          </div>
+          <div class="field">
+            <label for="message">Správa</label>
+            <textarea id="message" name="message" placeholder="Stručne popíšte cieľ, štýl, termín a rozpočet (ak máte predstavu)." required></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit">Odoslať dopyt</button>
+          <p class="hint" style="margin:10px 0 0">⚙️ Formulár používa <code>mailto:</code> a otvorí váš emailový klient. Ak by to nešlo, napíšte priamo na <a id="mailLink" href="mailto:info@infocusslovakia.sk">info@infocusslovakia.sk</a>.</p>
+        </form>
+
+        <!-- Info + Map -->
+        <aside class="reveal">
+          <div class="box" style="margin-bottom:12px">
+            <h3 style="margin:0 0 8px">Kontaktné údaje</h3>
+            <div class="kv">
+              <span class="pill">Email</span>
+              <div><a id="copyEmail" href="mailto:info@infocusslovakia.sk">info@infocusslovakia.sk</a> <button id="copyBtn" class="btn" style="padding:6px 10px; margin-left:8px">Kopírovať</button></div>
+
+              <span class="pill">Telefón</span>
+              <div><a href="tel:+421900000000">+421 900 000 000</a></div>
+
+              <span class="pill">Lokalita</span>
+              <div>Slovensko / Česko (na diaľku aj na mieste)</div>
+
+              <span class="pill">Dostupnosť</span>
+              <div>Pondelok – Piatok, 9:00–17:00</div>
+            </div>
+          </div>
+
+          <div class="box map">
+            <iframe
+              src="https://www.google.com/maps?q=Gelnica,Slovensko&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              title="Mapa — približná poloha">
+            </iframe>
+          </div>
+
+          <div class="box" style="margin-top:12px">
+            <h3 style="margin:0 0 8px">GDPR & poznámka</h3>
+            <p class="hint">Údaje z formulára slúžia výlučne na spracovanie vášho dopytu. Prílohy neposielajte cez formulár (mailto to nepodporuje) — pošlite ich ako odpoveď v emailovej komunikácii.</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- FAQ -->
+      <section class="faq">
+        <details class="reveal">
+          <summary>Do kedy zvyčajne odpovedáte?</summary>
+          <p>Najčastejšie do 24 hodín počas pracovných dní. Pri urgentných projektoch uveďte v správe „EXPRES“.</p>
+        </details>
+        <details class="reveal">
+          <summary>Viete prísť aj mimo Gelnice?</summary>
+          <p>Áno, pokrývame celé Slovensko aj Česko. Cestovné náklady riešime individuálne podľa lokácie.</p>
+        </details>
+        <details class="reveal">
+          <summary>Máte cenník?</summary>
+          <p>Orientačné balíky nájdete na stránke <a href="cennik.html">Cenník</a>. Presnú cenu pripravíme podľa zadania.</p>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> infocusslovakia. Všetky práva vyhradené.</small>
+      <small>Web by infocusslovakia — <a href="index.html#kontakt" style="color:var(--accent)">kontakt</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Mobile nav
+    const burger = document.querySelector('.burger');
+    const navlist = document.getElementById('navlist');
+    burger?.addEventListener('click', () => {
+      const open = navlist.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // ===== Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ===== Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Contact form via mailto
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const topic = document.getElementById('topic').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      const TO_EMAIL = 'info@infocusslovakia.sk'; // ← zmeňte na svoju adresu
+      const subject = encodeURIComponent(`Dopyt z webu — ${topic || 'infocusslovakia'}`);
+      const body = encodeURIComponent(
+        `Meno/Firma: ${name}\nEmail: ${email}\nTelefón: ${phone || '-'}\nTéma: ${topic || '-'}\n\nSpráva:\n${msg}`
+      );
+      const mailto = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+      window.location.href = mailto;
+      form.reset();
+    });
+
+    // ===== Copy email to clipboard
+    const copyBtn = document.getElementById('copyBtn');
+    copyBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = 'info@infocusslovakia.sk';
+      navigator.clipboard?.writeText(email).then(()=>{
+        copyBtn.textContent = 'Skopírované ✓';
+        setTimeout(()=> copyBtn.textContent = 'Kopírovať', 1500);
+      });
+    });
+  </script>
+</body>
+</html>

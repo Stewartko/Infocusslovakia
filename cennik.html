@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>infocusslovakia — Cenník & balíky</title>
+  <meta name="description" content="Transparentné balíky a orientačné ceny pre video produkciu: social videá, promo, event aftermovie a riešenia na mieru." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #121821;
+      --text: #eaf0f6;
+      --muted: #9aa8b7;
+      --accent: #59c1ff;
+      --accent-2: #ff4d6d;
+      --maxw: 1100px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, #0f1822 0%, #0b0f14 50%, #0b0f14 100%) fixed;
+      line-height:1.6;
+    }
+    .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px; }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 65%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; height:64px; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px; }
+    .brand .logo{ width:34px; height:34px; border-radius:10px; background: conic-gradient(from 210deg at 50% 50%, #0e1b26, #16283a 35%, #182a40 36%, #59c1ff 37%, #16283a 55%, #0e1b26 100%); box-shadow: inset 0 2px 8px rgba(0,0,0,.4), 0 4px 16px rgba(89,193,255,.15); }
+    .brand span{ font-size:1.05rem; text-transform:lowercase; }
+    a.brand{ text-decoration:none; color:inherit; }
+
+    nav ul{ list-style:none; display:flex; gap:18px; margin:0; padding:0; }
+    nav a{ color:var(--text); text-decoration:none; font-weight:500; opacity:.9; }
+    nav a:hover{ opacity:1; color:var(--accent); }
+    nav a.active{ color:var(--accent); opacity:1; }
+    .burger{ display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:var(--panel); align-items:center; justify-content:center; cursor:pointer; }
+    .burger span{ display:block; width:20px; height:2px; background:var(--text); position:relative; }
+    .burger span::before,.burger span::after{ content:""; position:absolute; left:0; width:20px; height:2px; background:var(--text); transition:.2s ease; }
+    .burger span::before{ top:-6px; } .burger span::after{ top:6px; }
+    @media (max-width:820px){ nav ul{ display:none; position:absolute; top:64px; right:16px; left:16px; padding:16px; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; box-shadow:var(--shadow); } nav ul.open{ display:flex; flex-direction:column; } .burger{ display:flex; } }
+
+    /* Hero */
+    .hero{ padding: 96px 0 42px; }
+    .hero h1{ font-size: clamp(2rem, 3.6vw, 3rem); line-height:1.15; margin:0 0 12px; }
+    .hero p{ color:var(--muted); margin:0; }
+
+    /* Pricing */
+    .plans{ display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; margin-top:28px; }
+    @media (max-width:1100px){ .plans{ grid-template-columns: 1fr 1fr; } }
+    @media (max-width:680px){ .plans{ grid-template-columns: 1fr; } }
+
+    .plan{ background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; display:flex; flex-direction:column; gap:12px; }
+    .plan .eyebrow{ color:var(--accent); font-weight:700; letter-spacing:.12em; font-size:.78rem; text-transform:uppercase; }
+    .plan h3{ margin:0; font-size:1.15rem; }
+    .price{ font-size:1.6rem; font-weight:700; margin:4px 0 8px; }
+    .price small{ color:var(--muted); font-weight:500; font-size:.95rem; }
+    .feat{ display:grid; gap:8px; margin:6px 0 4px; color:var(--muted); }
+    .feat li{ list-style:none; display:flex; gap:10px; align-items:flex-start; }
+    .check{ width:22px; height:22px; border-radius:8px; display:grid; place-items:center; background: radial-gradient(120% 120% at 20% 20%, rgba(89,193,255,.25), rgba(89,193,255,.06)); border:1px solid rgba(255,255,255,.08); flex:0 0 auto; }
+    .plan .cta{ margin-top:auto; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, #1a222e, #101722); color:var(--text); text-decoration:none; font-weight:600; box-shadow: 0 10px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05); }
+    .btn:hover{ border-color: color-mix(in oklab, var(--accent) 40%, white 0%); box-shadow: 0 12px 28px rgba(0,0,0,.4), 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent); }
+    .btn--primary{ background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 55%, #1b2531), #172233); border-color: color-mix(in oklab, var(--accent) 60%, #000 0%); }
+
+    .plan.featured{ outline: 2px solid color-mix(in oklab, var(--accent) 50%, white 0%); box-shadow: 0 20px 40px rgba(0,0,0,.45); position:relative; }
+    .badge{ position:absolute; top:12px; right:12px; background: color-mix(in oklab, var(--accent) 25%, #101722); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:6px 10px; font-size:.78rem; font-weight:700; letter-spacing:.02em; }
+
+    /* Addons */
+    .addons{ margin: 54px 0 0; display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    @media (max-width:820px){ .addons{ grid-template-columns: 1fr; } }
+    .box{ background: linear-gradient(180deg, #121a24, #0e141d); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); }
+    .box h3{ margin:0 0 8px; }
+    .kv{ display:grid; grid-template-columns: 1fr auto; gap:10px 12px; align-items:center; }
+    .kv div{ color:var(--muted); }
+
+    /* FAQ */
+    .faq{ margin-top:54px; }
+    details{ background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow); }
+    details + details{ margin-top:10px; }
+    summary{ cursor:pointer; font-weight:600; }
+    details[open] summary{ color:var(--accent); }
+
+    footer{ padding: 30px 0 60px; color:var(--muted); border-top:1px solid rgba(255,255,255,.06); margin-top:60px; }
+    .foot{ display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container nav">
+          <a class="brand" href="index.html#home" aria-label="Domov">
+            <div class="logo" aria-hidden="true"></div>
+            <span>infocusslovakia</span>
+          </a>
+          <nav aria-label="Hlavná navigácia">
+            <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlist"><span></span></button>
+            <ul id="navlist">
+              <li><a href="index.html#home">Domov</a></li>
+              <li><a href="projekty.html">Projekty</a></li>
+              <li><a href="cennik.html" class="active">Cenník</a></li>
+              <li><a href="proces.html">Proces</a></li>
+              <li><a href="onas.html">O nás</a></li>
+              <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+  <main class="hero">
+    <div class="container">
+      <h1>Cenník & balíky</h1>
+      <p>Transparentné balíky pre rôzne potreby — od krátkych social videí až po plnohodnotné promo a eventy.</p>
+
+      <div class="plans">
+        <!-- Starter -->
+        <section class="plan">
+          <div class="eyebrow">Starter</div>
+          <h3>Social videá (15–30 s)</h3>
+          <div class="price">od 199 € <small>/ video</small></div>
+          <ul class="feat">
+            <li><span class="check">✓</span>Úvodná konzultácia & shotlist</li>
+            <li><span class="check">✓</span>Nakrútanie do 2 h (1 lokácia)</li>
+            <li><span class="check">✓</span>Strih + základný color grading</li>
+            <li><span class="check">✓</span>Licencovaná hudba</li>
+            <li><span class="check">✓</span>1 kolo revízií</li>
+            <li><span class="check">✓</span>Export pre IG/TikTok (9:16)</li>
+          </ul>
+          <div class="cta"><a class="btn" href="index.html#kontakt">Požiadať o ponuku</a></div>
+        </section>
+
+        <!-- Business (featured) -->
+        <section class="plan featured">
+          <div class="badge">Najobľúbenejšie</div>
+          <div class="eyebrow">Business</div>
+          <h3>Promo video (60–90 s)</h3>
+          <div class="price">od 690 € <small>/ projekt</small></div>
+          <ul class="feat">
+            <li><span class="check">✓</span>Scenár, shotlist, časový plán</li>
+            <li><span class="check">✓</span>Nakrútanie do 6 h (viac lokácií)</li>
+            <li><span class="check">✓</span>Strih, color grading, jednoduchá grafika</li>
+            <li><span class="check">✓</span>Licencovaná hudba + základné SFX</li>
+            <li><span class="check">✓</span>2 kolá revízií</li>
+            <li><span class="check">✓</span>Export pre web (16:9) + social verzie</li>
+          </ul>
+          <div class="cta"><a class="btn btn--primary" href="index.html#kontakt">Začať spoluprácu</a></div>
+        </section>
+
+        <!-- Event -->
+        <section class="plan">
+          <div class="eyebrow">Event</div>
+          <h3>Aftermovie (2–3 min)</h3>
+          <div class="price">od 990 € <small>/ projekt</small></div>
+          <ul class="feat">
+            <li><span class="check">✓</span>Pre-produkcia (logistika, harmonogram)</li>
+            <li><span class="check">✓</span>Nakrútanie do 8 h (priebežné momenty)</li>
+            <li><span class="check">✓</span>Strih, color grading, hudba/SFX</li>
+            <li><span class="check">✓</span>2 kolá revízií</li>
+            <li><span class="check">✓</span>Export 16:9 + teaser 9:16</li>
+          </ul>
+          <div class="cta"><a class="btn" href="index.html#kontakt">Požiadať o ponuku</a></div>
+        </section>
+
+        <!-- Custom -->
+        <section class="plan">
+          <div class="eyebrow">Custom</div>
+          <h3>Riešenie na mieru</h3>
+          <div class="price">podľa zadania</div>
+          <ul class="feat">
+            <li><span class="check">✓</span>Konzultácia & kreatívny návrh</li>
+            <li><span class="check">✓</span>Technika a štáb podľa potreby</li>
+            <li><span class="check">✓</span>Možnosť série videí / kampane</li>
+            <li><span class="check">✓</span>Viacjazyčné verzie, titulky</li>
+          </ul>
+          <div class="cta"><a class="btn" href="index.html#kontakt">Získať cenovú ponuku</a></div>
+        </section>
+      </div>
+
+      <div class="addons">
+        <section class="box">
+          <h3>Príplatkové služby</h3>
+          <div class="kv">
+            <div>Voiceover (SK/CZ/EN)</div> <strong>od 80 €</strong>
+            <div>Letecké zábery dronom</div> <strong>od 120 €</strong>
+            <div>Titulky (SRT/hardcoded)</div> <strong>od 40 €</strong>
+            <div>Expresné dodanie (do 48 h)</div> <strong>+30 %</strong>
+            <div>4K mastering</div> <strong>od 50 €</strong>
+            <div>Viac verzií/dĺžok</div> <strong>podľa dohody</strong>
+          </div>
+        </section>
+        <section class="box">
+          <h3>Poznámky k cenám</h3>
+          <ul>
+            <li>Uvedené ceny sú <strong>orientačné</strong> a závisia od rozsahu a náročnosti.</li>
+            <li>Cestovné náklady a lokácie mimo bydliska podľa dohody.</li>
+            <li>Dodanie najčastejšie do <strong>3–7 dní</strong> od nakrúcania.</li>
+            <li>V cene sú uvedené počty revízií; ďalšie úpravy sú možné po dohode.</li>
+          </ul>
+          <p style="margin:10px 0 0"><a class="btn" href="index.html#kontakt">Chcem presnú kalkuláciu</a></p>
+        </section>
+      </div>
+
+      <section class="faq">
+        <details>
+          <summary>Koľko revízií je v cene?</summary>
+          <p>Pri balíkoch Business a Event sú zahrnuté <strong>2 kolá revízií</strong>, pri Starter 1 kolo. Ďalšie úpravy podľa dohody.</p>
+        </details>
+        <details>
+          <summary>Aké formáty výstupov dodávate?</summary>
+          <p>Bežne 16:9 (YouTube/Web) a 9:16 (IG/TikTok). Vieme dodať aj 1:1, 4:5, s titulkami alebo bez.</p>
+        </details>
+        <details>
+          <summary>Viete zabezpečiť hercov, lokácie alebo rekvizity?</summary>
+          <p>Áno, na vyžiadanie vieme riešiť casting, lokácie, rekvizity aj styling.</p>
+        </details>
+        <details>
+          <summary>Pracujete po celom Slovensku/Česku?</summary>
+          <p>Áno. Cestovné a ubytovanie riešime podľa konkrétneho projektu.</p>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> infocusslovakia. Všetky práva vyhradené.</small>
+      <small><a href="index.html#kontakt" style="color:var(--accent)">Poďme sa spojiť</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const burger = document.querySelector('.burger');
+    const navlist = document.getElementById('navlist');
+    burger?.addEventListener('click', () => {
+      const open = navlist.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
