@@ -5,405 +5,229 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>infocusslovakia — Profesionálne natáčanie a úprava videí</title>
   <meta name="description" content="infocusslovakia — profesionálne natáčanie, postprodukcia, strih a tvorba promo videí pre značky a kreatívcov." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0b0f14;           /* pozadie */
-      --panel: #121821;        /* karty/nav */
-      --text: #eaf0f6;         /* hlavný text */
-      --muted: #9aa8b7;        /* sekundárny text */
-      --accent: #59c1ff;       /* modrý akcent */
-      --accent-2: #ff4d6d;     /* jemný kontrast na hover/focus */
-      --maxw: 1100px;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    :root{
+      --bg:#0b0f14; --panel:#121821; --text:#eaf0f6; --muted:#9aa8b7; --accent:#59c1ff; --accent-2:#ff4d6d;
+      --maxw:1100px; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --ticker-h:36px; --ticker-speed:140; /* px/s */
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, #0f1822 0%, #0b0f14 50%, #0b0f14 100%) fixed;
-      line-height: 1.6;
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,"Helvetica Neue",sans-serif;
+      color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, #0f1822 0%, #0b0f14 50%, #0b0f14 100%) fixed;
+      line-height:1.6; padding-top:var(--ticker-h); /* priestor pod fixný ticker */
     }
-
-    /* Layout */
-    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-    section { padding: 80px 0; }
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    section{padding:80px 0}
 
     /* Header */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: saturate(120%) blur(8px);
-      background: color-mix(in oklab, var(--bg) 65%, transparent);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    
-    .nav {
-      display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      height: 64px;
-    }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px; }
-    .brand .logo {
-      width: 34px; height: 34px; border-radius: 10px; background:
-        conic-gradient(from 210deg at 50% 50%, #0e1b26, #16283a 35%, #182a40 36%, #59c1ff 37%, #16283a 55%, #0e1b26 100%);
-      box-shadow: inset 0 2px 8px rgba(0,0,0,.4), 0 4px 16px rgba(89,193,255,.15);
-    }
-    .brand span { font-size: 1.05rem; text-transform: lowercase;}
-
-    a.brand {
-  text-decoration: none;
-  color: inherit; /* nech sa zachová farba textu */
-}
-
-
-    nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
-    nav a { color: var(--text); text-decoration: none; font-weight: 500; opacity: .9; }
-    nav a:hover { opacity: 1; color: var(--accent); }
-
-    /* Mobile menu */
-    .burger { display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:var(--panel); align-items:center; justify-content:center; cursor:pointer; }
-    .burger span { display:block; width:20px; height:2px; background:var(--text); position:relative; }
-    .burger span::before, .burger span::after { content:""; position:absolute; left:0; width:20px; height:2px; background:var(--text); transition:.2s ease; }
-    .burger span::before { top:-6px; } .burger span::after { top:6px; }
-
-    @media (max-width: 820px) {
-      nav ul { display:none; position:absolute; top:64px; right:16px; left:16px; padding:16px; background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; box-shadow: var(--shadow); }
-      nav ul.open { display:flex; flex-direction:column; }
-      .burger { display:flex; }
+    header{position:sticky;top:var(--ticker-h);z-index:50;backdrop-filter:saturate(120%) blur(8px);background:color-mix(in oklab,var(--bg) 65%,transparent);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px;text-decoration:none;color:inherit}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 210deg at 50% 50%,#0e1b26,#16283a 35%,#182a40 36%,#59c1ff 37%,#16283a 55%,#0e1b26 100%);box-shadow:inset 0 2px 8px rgba(0,0,0,.4),0 4px 16px rgba(89,193,255,.15)}
+    nav ul{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+    nav a{color:var(--text);text-decoration:none;font-weight:500;opacity:.9}
+    nav a:hover{opacity:1;color:var(--accent)}
+    .burger{display:none;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:var(--panel);align-items:center;justify-content:center;cursor:pointer}
+    .burger span{display:block;width:20px;height:2px;background:var(--text);position:relative}
+    .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--text);transition:.2s ease}
+    .burger span::before{top:-6px}.burger span::after{top:6px}
+    @media (max-width:820px){
+      nav ul{display:none;position:absolute;top:64px;right:16px;left:16px;padding:16px;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:var(--shadow)}
+      nav ul.open{display:flex;flex-direction:column}
+      .burger{display:flex}
     }
 
-    /* Hero */
-    .hero { padding: 96px 0 72px; }
-    .hero-wrap { display:grid; grid-template-columns: 1.1fr .9fr; gap: 36px; align-items:center; }
-    .hero h1 { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.15; margin: 0 0 12px; }
-    .hero p { color: var(--muted); margin: 0 0 24px; }
-    .cta { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 12px 18px; border-radius: 12px; border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, #1a222e, #101722); color: var(--text); text-decoration:none; font-weight:600; box-shadow: 0 10px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05); }
-    .btn:hover { border-color: color-mix(in oklab, var(--accent) 40%, white 0%); box-shadow: 0 12px 28px rgba(0,0,0,.4), 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent); }
-    .btn--primary { background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 55%, #1b2531), #172233); border-color: color-mix(in oklab, var(--accent) 60%, #000 0%); }
+    /* Tlačidlá */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,#1a222e,#101722);color:var(--text);text-decoration:none;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05)}
+    .btn:hover{border-color:color-mix(in oklab,var(--accent) 40%, white 0%);box-shadow:0 12px 28px rgba(0,0,0,.4),0 0 0 3px color-mix(in oklab,var(--accent) 25%, transparent)}
+    .btn--primary{background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 55%, #1b2531),#172233);border-color:color-mix(in oklab,var(--accent) 60%, #000 0%)}
+    .btn--lg{padding:14px 18px;border-radius:16px;font-size:1.02rem}
 
-    .hero-art {
-      position:relative; height: 360px; border-radius: 22px; overflow:hidden; background:
-        radial-gradient(120% 120% at 80% 10%, rgba(89,193,255,.25) 0%, rgba(89,193,255,.06) 30%, transparent 50%),
-        radial-gradient(120% 120% at 20% 90%, rgba(255,77,109,.18) 0%, rgba(255,77,109,.06) 40%, transparent 60%),
-        linear-gradient(180deg, #0f1722 0%, #0b0f14 100%);
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
+    /* Reels */
+    section.reel{position:relative;min-height:100dvh;padding:0;display:grid;place-items:center;overflow:clip;background:#000}
+    .reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(105%) contrast(102%)}
+    .reel .overlay{position:relative;z-index:2;width:min(900px,92%);color:var(--text);text-align:center;padding:24px 16px}
+    .reel .overlay h2{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:0 0 12px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+    .reel .overlay p{color:var(--muted);font-size:clamp(16px,2.2vw,18px);margin:0 0 20px;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    .reel .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 40%,rgba(0,0,0,.55));z-index:1}
+    section.reel + section.reel{border-top:1px solid rgba(255,255,255,.06)}
+
+    /* Floating CTA (v strede dole) */
+    .fab-order{position:fixed;left:50%;bottom:22px;z-index:60;transform:translate(-50%,0);padding:14px 18px;border-radius:999px;background:linear-gradient(135deg,#ff4d4d,#ff7a1a);color:#fff;font-weight:700;text-decoration:none;letter-spacing:.2px;box-shadow:0 8px 24px rgba(255,90,24,.35),0 2px 8px rgba(0,0,0,.35);transition:transform .15s ease, box-shadow .2s ease, opacity .3s ease}
+    .fab-order:hover{transform:translate(-50%,-2px);box-shadow:0 12px 28px rgba(255,90,24,.45),0 4px 12px rgba(0,0,0,.4)}
+    @media (max-width:520px){.fab-order{padding:12px 16px}}
+
+    /* IG 9:16 */
+    .reel.reel--916{display:grid;place-items:center}
+    .reel.reel--916 .frame{aspect-ratio:9/16;height:min(100dvh,calc(100vw*16/9));width:min(100vw,calc(100dvh*9/16));position:relative;overflow:hidden;border-radius:22px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);background:#000;isolation:isolate}
+    .reel.reel--916 .frame>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .reel.reel--916 .frame .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15) 40%,rgba(0,0,0,.55))}
+    .reel.reel--916 .overlay.overlay--inframe{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 14px 20px;text-align:center}
+    .reel.reel--916 .overlay.overlay--inframe h2{margin:0 0 8px;font-size:clamp(20px,3.8vw,28px);text-shadow:0 2px 14px rgba(0,0,0,.45)}
+    .reel.reel--916 .overlay.overlay--inframe p{margin:0 0 12px;font-size:clamp(14px,2.6vw,16px);color:var(--muted);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    .reel.reel--916 .overlay.overlay--inframe .btn{padding:10px 14px}
+
+    /* Compare hero */
+    .reel.reel--compare{--split:30%;position:relative;min-height:100dvh}
+    .reel.reel--compare .stage{position:absolute;inset:0}
+    .reel.reel--compare video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .reel.reel--compare .vid--after{z-index:1}
+    .reel.reel--compare .vid--before{z-index:2;clip-path:polygon(0 0,var(--split) 0,var(--split) 100%,0 100%)}
+    .reel.reel--compare .scrim{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 20%,rgba(0,0,0,.15),transparent 45%),linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.15) 40%,rgba(0,0,0,.55));z-index:3}
+    .reel.reel--compare .divider{position:absolute;top:0;bottom:0;left:var(--split);width:2px;background:rgba(255,255,255,.75);z-index:6;transform:translateX(-1px);box-shadow:0 0 0 1px rgba(0,0,0,.15)}
+    .reel.reel--compare .handle{position:absolute;left:var(--split);top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;z-index:7;cursor:ew-resize;display:grid;place-items:center;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);box-shadow:var(--shadow)}
+    .reel.reel--compare .tag{position:absolute;top:16px;padding:8px 10px;font-weight:700;font-size:.9rem;border-radius:999px;z-index:6;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px)}
+    .reel.reel--compare .tag--before{left:16px}.reel.reel--compare .tag--after{right:16px}
+
+    /* Ticker (plynulý loop) */
+    .ticker{position:fixed;inset:0 0 auto 0;height:var(--ticker-h);z-index:1000;background:linear-gradient(180deg,color-mix(in oklab,var(--panel) 92%,#000),var(--panel));color:var(--text);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;font-weight:700;letter-spacing:.15px}
+    .ticker__inner{height:100%;display:flex;align-items:center;mask-image:linear-gradient(to right,transparent 0,#000 26px,#000 calc(100% - 26px),transparent 100%)}
+    .ticker__belt{display:flex;flex-wrap:nowrap;align-items:center;will-change:transform;transform:translate3d(0,0,0);animation:marquee var(--dur,20s) linear infinite}
+    .ticker__content{display:inline-flex;align-items:center;gap:28px;white-space:nowrap;padding:0 26px}
+    .ticker__dot{width:6px;height:6px;border-radius:999px;background:var(--accent);display:inline-block}
+    .ticker a{color:var(--text);text-decoration:none;opacity:.9}
+    .ticker a:hover{opacity:1;color:var(--accent)}
+    @keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-1 * var(--half,1000px)),0,0)}}
+    .ticker:hover .ticker__belt,.ticker:focus-within .ticker__belt{animation-play-state:paused}
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion:reduce){
+      .ticker__belt{animation:none}
+      .reel video{filter:none}
     }
-    .hero-art::after {
-      content:""; position:absolute; inset: 0; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 90" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23ffffff" stop-opacity="0.06"/><stop offset="1" stop-color="%23ffffff" stop-opacity="0"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>') center/cover no-repeat; mix-blend-mode: overlay; opacity:.5;
-    }
-    .art-float {
-      position:absolute; inset:auto auto 18px 18px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius: 16px; padding: 14px 16px; backdrop-filter: blur(6px);
-    }
-    .art-float small { color: var(--muted); display:block; margin-bottom:4px; }
-
-    @media (max-width: 960px) {
-      .hero-wrap { grid-template-columns: 1fr; }
-      .hero-art { height: 260px; }
-    }
-
-    /* Section headings */
-    .section-head { margin-bottom: 28px; }
-    .section-eyebrow { color: var(--accent); font-weight:700; letter-spacing:.12em; font-size:.8rem; text-transform:uppercase; }
-    .section-title { margin:6px 0 0; font-size: clamp(1.4rem, 2.2vw, 2rem); }
-    .section-desc { color: var(--muted); margin-top: 6px; }
-
-    /* Cards */
-    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    @media (max-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-
-    .card { background: var(--panel); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); transition: transform .2s ease, border-color .2s ease; }
-    .card:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--accent) 25%, white 0%); }
-
-    .icon {
-      width: 44px; height:44px; border-radius:12px; display:grid; place-items:center; margin-bottom:12px; background: radial-gradient(120% 120% at 20% 20%, rgba(89,193,255,.25), rgba(89,193,255,.06)); border:1px solid rgba(255,255,255,.08);
-    }
-    .card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); }
-
-    /* Portfolio */
-    .works { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
-    @media (max-width: 960px) { .works { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .works { grid-template-columns: 1fr; } }
-
-    .work {
-      position:relative; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.08); background:
-        linear-gradient(135deg, #0f1a26, #0d141d);
-      display:flex; align-items:center; justify-content:center; isolation:isolate; cursor:pointer;
-    }
-    .work::before { content:""; position:absolute; inset:0; background: radial-gradient(120% 120% at 75% 25%, rgba(89,193,255,.25), transparent 50%), radial-gradient(120% 120% at 20% 80%, rgba(255,77,109,.18), transparent 60%); opacity:.5; z-index:0; }
-    .play { position:relative; z-index:1; width:64px; height:64px; border-radius:50%; background: rgba(255,255,255,.1); display:grid; place-items:center; border:1px solid rgba(255,255,255,.18); box-shadow: var(--shadow); }
-    .play svg { transform: translateX(2px); }
-    .work figcaption { position:absolute; left:12px; bottom:10px; right:12px; color: var(--muted); background: linear-gradient(180deg, transparent, rgba(0,0,0,.55)); padding: 36px 12px 8px; font-size:.95rem; }
-
-    /* Kontakt */
-    .contact { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    @media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
-
-    form { background: var(--panel); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .field { display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
-    label { font-weight:600; font-size:.95rem; }
-    input, textarea { width:100%; padding:12px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:#0e1420; color:var(--text); outline:none; }
-    input:focus, textarea:focus { border-color: color-mix(in oklab, var(--accent) 45%, white 0%); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
-    textarea { min-height: 120px; resize: vertical; }
-
-    aside.box { background: linear-gradient(180deg, #121a24, #0e141d); border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    aside.box ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-
-    /* Footer */
-    footer { padding: 30px 0 60px; color: var(--muted); border-top:1px solid rgba(255,255,255,.06); }
-    .foot { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    .foot small { opacity:.9; }
-
-    /* Reveal on scroll */
-    .reveal { opacity: 0; transform: translateY(14px); filter: saturate(.9); transition: opacity .6s ease, transform .6s ease, filter .6s ease; }
-    .reveal.is-visible { opacity: 1; transform: none; filter: saturate(1); }
   </style>
 </head>
-<body>
-    <header>
-        <div class="container nav">
-          <a class="brand" href="index.html#home" aria-label="Domov">
-            <div class="logo" aria-hidden="true"></div>
-            <span>infocusslovakia</span>
-          </a>
-          <nav aria-label="Hlavná navigácia">
-            <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlist"><span></span></button>
-            <ul id="navlist">
-              <li><a href="index.html#home" class="active">Domov</a></li>
-              <li><a href="projekty.html">Projekty</a></li>
-              <li><a href="cennik.html">Cenník</a></li>
-              <li><a href="proces.html">Proces</a></li>
-              <li><a href="onas.html">O nás</a></li>
-              <li><a href="kontakt.html">Kontakt</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-  <main id="home" class="hero">
-    <div class="container hero-wrap">
-      <div class="reveal">
-        <h1>Profesionálne natáčanie & úprava videí</h1>
-        <p>Pomáhame značkám a tvorcom rozprávať príbehy. Od preprodukcie cez natáčanie až po precízny strih, color grading a zvuk.</p>
-        <div class="cta">
-          <a href="#sluzby" class="btn btn--primary">Zistiť služby</a>
-          <a href="#portfolio" class="btn">Pozrieť ukážky</a>
-        </div>
-      </div>
-      <div class="hero-art reveal" aria-hidden="true">
-        <div class="art-float">
-          <small>Focus on story</small>
-          <strong>Filmový look. Čistý zvuk. Silná emócia.</strong>
+<body class="home">
+  <!-- Ticker -->
+  <div class="ticker" role="region" aria-label="Kontaktné informácie">
+    <div class="ticker__inner">
+      <div class="ticker__belt" id="tickerBelt">
+        <div class="ticker__content" id="tickerItem">
+          <span class="ticker__dot"></span>
+          <span>📞 <a href="tel:+421900000000">+421 900 000 000</a></span>
+          <span>✉️ <a href="mailto:info@infocusslovakia.sk">info@infocusslovakia.sk</a></span>
+          <span><a href="https://www.instagram.com/infocus_slovakia/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="https://www.instagram.com/static/images/ico/favicon-200.png/ab6eff595bb1.png" alt="Instagram" width="16" height="16" style="vertical-align:middle;margin-right:6px;margin-bottom:2px" loading="lazy">infocusslovakia</a></span>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html#home" aria-label="Domov">
+        <div class="logo" aria-hidden="true"></div>
+        <span>infocusslovakia</span>
+      </a>
+      <nav aria-label="Hlavná navigácia">
+        <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlist"><span></span></button>
+        <ul id="navlist">
+          <li><a href="index.html#home">Domov</a></li>
+          <li><a href="social.html">Socialne media</a></li>
+          <li><a href="web.html">Web stranka</a></li>
+          <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CTA -->
+  <a class="fab-order" href="kontakt.html" aria-label="Objednať video">Chcem video</a>
+
+  <main>
+    <!-- HERO: Before/After compare -->
+    <section class="reel reel--compare" aria-label="Ukážka — Before/After grading">
+      <div class="stage">
+        <video class="vid--after" autoplay muted playsinline preload="none" poster="assets/poster-after.jpg" src="assets/loop.mp4"></video>
+        <video class="vid--before" autoplay muted playsinline preload="none" poster="assets/poster-before.jpg" src="assets/before.mp4"></video>
+        <div class="divider" aria-hidden="true"></div>
+        <button class="handle" type="button" aria-label="Posuň porovnanie (Before/After)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="tag tag--before">Before</div>
+        <div class="tag tag--after">After</div>
+      </div>
+    </section>
+
+    <!-- IG 9:16 -->
+    <section class="reel reel--916" aria-label="Ukážka — IG 9:16">
+      <div class="frame">
+        <video autoplay muted playsinline preload="none" poster="assets/poster-reel2.jpg" src="assets/reel2.mp4"></video>
+        <div class="scrim" aria-hidden="true"></div>
+        <div class="overlay overlay--inframe">
+          <h2>Krátke formáty pre IG, TikTok aj YouTube</h2>
+          <p>Stačia nám 1–2 hodiny natáčania. Dodáme titulky, hudbu, prestrihy a farbenie.</p>
+          <div class="cta"><a href="projekty.html" class="btn btn--lg">Pozrieť ďalšie ukážky</a></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <section id="sluzby">
-    <div class="container">
-      <header class="section-head reveal">
-        <div class="section-eyebrow">Služby</div>
-        <h2 class="section-title">Čo pre vás vieme spraviť</h2>
-        <p class="section-desc">Kompletná video produkcia od nápadu až po odovzdanie súborov pripravených na web a sociálne siete.</p>
-      </header>
-
-      <div class="grid">
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true">
-            <!-- kamera -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M15 10V7a2 2 0 0 0-2-2H5A2 2 0 0 0 3 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3l6 4V6l-6 4z" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </div>
-          <h3>Natáčanie videí</h3>
-          <p>Štáb, technika a svetlo podľa potreby — produktové videá, eventy, rozhovory, promo.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true">
-            <!-- strih -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M14.5 12 3 3m0 18 11.5-9M19 5a2 2 0 1 1 0 4m0 6a2 2 0 1 1 0 4" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </div>
-          <h3>Postprodukcia & strih</h3>
-          <p>Strih, color grading, motion grafika a mix zvuku pre uhladený, profesionálny výsledok.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true">
-            <!-- sociálne -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M7 21v-6a4 4 0 1 1 8 0v6M5 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </div>
-          <h3>Promo pre sociálne siete</h3>
-          <p>Krátke vertikálne videá, trailery a teasre optimalizované pre IG, TikTok a YouTube.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <div class="container">
-      <header class="section-head reveal">
-        <div class="section-eyebrow">Ukážky</div>
-        <h2 class="section-title">Vybrané výsledky</h2>
-        <p class="section-desc">Klikni na náhľad — v kóde jednoducho vymeň odkazy za svoje videá alebo obrázky.</p>
-      </header>
-
-      <div class="works">
-        <figure class="work reveal" data-url="https://www.youtube.com/embed/JFgymPBTnhA?si=v2-rCTsYlxsdIBeY" role="button" aria-label="Prehrať ukážku 1">
-          <div class="play" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg>
-          </div>
-          <figcaption>Produktový spot — dynamický strih a color grading</figcaption>
-        </figure>
-        <figure class="work reveal" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ" role="button" aria-label="Prehrať ukážku 2">
-          <div class="play" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg>
-          </div>
-          <figcaption>Aftermovie z eventu — nálada & plynulý rytmus</figcaption>
-        </figure>
-        <figure class="work reveal" data-url="https://www.youtube.com/embed/aqz-KE-bpKQ" role="button" aria-label="Prehrať ukážku 3">
-          <div class="play" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7L8 5Z" fill="currentColor"/></svg>
-          </div>
-          <figcaption>Reklamný klip — krátky príbeh s pointou</figcaption>
-        </figure>
-      </div>
-
-      <!-- jednoduché modálne okno pre prehrávanie YouTube -->
-      <dialog id="playerModal" style="width:min(920px, 92vw); border:none; border-radius:18px; padding:0; background:#0b0f14; color:#fff;">
-        <div style="display:flex; justify-content:flex-end; padding:10px 12px;">
-          <button id="playerClose" class="btn" style="padding:8px 12px;">Zavrieť</button>
-        </div>
-        <div style="aspect-ratio:16/9; width:100%;">
-          <iframe id="playerFrame" width="100%" height="100%" src="" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border:0; display:block; aspect-ratio:16/9;"></iframe>
-        </div>
-      </dialog>
-    </div>
-  </section>
-
-  <section id="kontakt">
-    <div class="container">
-      <header class="section-head reveal">
-        <div class="section-eyebrow">Kontakt</div>
-        <h2 class="section-title">Napíš nám</h2>
-        <p class="section-desc">Máte projekt alebo otázky? Ozvite sa — odpovieme čo najskôr.</p>
-      </header>
-
-      <div class="contact">
-        <form id="contactForm" class="reveal" aria-label="Kontaktný formulár">
-          <div class="field">
-            <label for="name">Meno</label>
-            <input id="name" name="name" type="text" placeholder="Vaše meno" required />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="vas@email.sk" required />
-          </div>
-          <div class="field">
-            <label for="message">Správa</label>
-            <textarea id="message" name="message" placeholder="Napíšte pár viet o projekte" required></textarea>
-          </div>
-          <button class="btn btn--primary" type="submit">Odoslať</button>
-          <p style="margin:10px 0 0; color:var(--muted); font-size:.9rem;">⚙️ Formulár posiela email cez <code>mailto:</code>. V kóde zmeňte adresu <code>TO_EMAIL</code> na svoju.</p>
-        </form>
-        
-
-        <aside class="box reveal">
-          <h3 style="margin-top:0">Rýchly prehľad</h3>
-          <ul>
-            <li><strong>Sídlo:</strong> Slovensko / Česko (na diaľku aj na mieste)</li>
-            <li><strong>Fókus:</strong> produktové videá, eventy, promo, social-first formáty</li>
-            <li><strong>Výstupy:</strong> 4K/1080p, horizont/vertikál, titulky, viac verzií</li>
-          </ul>
-        </aside>
-      </div>
-    </div>
-  </section>
-
   <footer>
-    <div class="container foot">
+    <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:30px 0 60px;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)">
       <small>© <span id="year"></span> infocusslovakia. Všetky práva vyhradené.</small>
-      <small>Web by infocusslovakia — <a href="#kontakt" style="color:var(--accent)">kontakt</a></small>
+      <small>Web by infocusslovakia — <a href="kontakt.html" style="color:var(--accent)">kontakt</a></small>
     </div>
   </footer>
 
+  <!-- Skripty (na konci kvôli výkonu) -->
   <script>
-    // ===== Mobile nav toggle
-    const burger = document.querySelector('.burger');
-    const navlist = document.getElementById('navlist');
-    burger?.addEventListener('click', () => {
-      const open = navlist.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    // ===== Smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href');
-        if (!id || id === '#' || !document.querySelector(id)) return;
-        e.preventDefault();
-        document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        navlist.classList.remove('open');
-        burger?.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // ===== Reveal on scroll (IntersectionObserver)
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('is-visible');
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // ===== Dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ===== Portfolio modal with YouTube embed
-    const modal = document.getElementById('playerModal');
-    const frame = document.getElementById('playerFrame');
-    const closeBtn = document.getElementById('playerClose');
-    function closeModal(){ if (modal.open) { frame.src = ''; modal.close(); } }
-    document.querySelectorAll('.work').forEach(w => {
-      w.addEventListener('click', () => {
-        const url = w.getAttribute('data-url');
-        if (url) {
-          frame.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
-          modal.showModal();
-        }
-      });
-    });
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-    // ===== Contact form via mailto
-    const TO_EMAIL = 'info@infocusslovakia.sk'; // ← ZMEŇTE na svoju adresu
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('message').value.trim();
-
-      const subject = encodeURIComponent('Dopyt z webu — infocusslovakia');
-      const body = encodeURIComponent(`Meno: ${name}\nEmail: ${email}\n\nSpráva:\n${msg}`);
-      const mailto = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
-      form.reset();
-    });
+    // Mobile nav
+    const burger=document.querySelector('.burger');const navlist=document.getElementById('navlist');
+    burger?.addEventListener('click',()=>{const open=navlist.classList.toggle('open');burger.setAttribute('aria-expanded',open?'true':'false')},{passive:true});
+    // Dynamic year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+  <script>
+    // Lazy play/pause non-compare videos
+    const vidsGlobal=[...document.querySelectorAll('section.reel:not(.reel--compare) video')];
+    const ioGlobal=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{});}else{v.pause();}});
+    },{threshold:.3});
+    vidsGlobal.forEach(v=>ioGlobal.observe(v));
+  </script>
+  <script>
+    // Compare slider
+    (function(){
+      const section=document.querySelector('.reel.reel--compare');if(!section) return;
+      const before=section.querySelector('.vid--before'), after=section.querySelector('.vid--after');
+      const handle=section.querySelector('.handle');
+      const setSplit=(px)=>{const r=section.getBoundingClientRect();const c=Math.max(0,Math.min(px-r.left,r.width));const p=(c/r.width)*100;section.style.setProperty('--split',p.toFixed(2)+'%');};
+      let dragging=false;
+      const start=(e)=>{dragging=true;(e.preventDefault?.());[before,after].forEach(v=>{v.muted=true;v.play().catch(()=>{})});};
+      const move=(e)=>{if(!dragging) return;const x=(e.touches?.[0]?.clientX??e.clientX);setSplit(x);};
+      const end=()=>{dragging=false;};
+      ['mousedown','touchstart'].forEach(ev=>handle.addEventListener(ev,start,{passive:false}));
+      ['mousemove','touchmove'].forEach(ev=>window.addEventListener(ev,move,{passive:false}));
+      ['mouseup','touchend','touchcancel','mouseleave'].forEach(ev=>window.addEventListener(ev,end,{passive:true}));
+      section.addEventListener('pointerdown',e=>setSplit(e.clientX),{passive:true});
+      const io=new IntersectionObserver(entries=>{const vis=entries.some(en=>en.isIntersecting);[before,after].forEach(v=>vis?v.play().catch(()=>{}):v.pause());},{threshold:.1});
+      io.observe(section);
+      // sync
+      const sync=()=>{if(after.readyState>=2&&before.readyState>=2){const d=Math.abs(after.currentTime-before.currentTime);if(d>0.08) before.currentTime=after.currentTime;}requestAnimationFrame(sync);}; sync();
+    })();
+  </script>
+  <script>
+    // Ticker builder (plynulý loop)
+    (function(){
+      const belt=document.getElementById('tickerBelt');const item=document.getElementById('tickerItem');if(!belt||!item) return;
+      const inner=document.querySelector('.ticker__inner');
+      function build(){
+        belt.innerHTML=''; belt.appendChild(item);
+        const vw=inner.clientWidth; let halfW=item.scrollWidth;
+        while(halfW<vw+100){const clone=item.cloneNode(true);clone.setAttribute('aria-hidden','true');belt.appendChild(clone);halfW+=item.scrollWidth;}
+        const halfNodes=[...belt.children].map(n=>n.cloneNode(true));halfNodes.forEach(n=>{n.setAttribute('aria-hidden','true');belt.appendChild(n);});
+        const speed=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ticker-speed'))||140;
+        belt.style.setProperty('--half',belt.scrollWidth/2+'px');
+        const dur=(belt.scrollWidth/2)/speed; belt.style.setProperty('--dur',Math.max(10,Math.min(60,dur)).toFixed(2)+'s');
+      }
+      build(); let raf; window.addEventListener('resize',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(build)},{passive:true});
+    })();
   </script>
 </body>
 </html>
